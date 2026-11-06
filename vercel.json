@@ -1,0 +1,8 @@
+{
+  "functions": {
+    "api/flatten.py": {
+      "memory": 1024,
+      "maxDuration": 30
+    }
+  }
+}

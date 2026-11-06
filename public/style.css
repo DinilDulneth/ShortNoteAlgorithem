@@ -1,0 +1,263 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Aptos, Roboto, sans-serif;
+  background: #f6f7f9;
+  color: #1f2328;
+  line-height: 1.5;
+}
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 24px 20px 80px;
+}
+
+header h1 {
+  margin: 0 0 4px;
+  font-size: 2rem;
+}
+.subtitle {
+  color: #57606a;
+  margin: 0 0 24px;
+}
+
+.info-box {
+  background: #eaf3ff;
+  border-left: 4px solid #3b82f6;
+  padding: 12px 16px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  font-size: 0.95rem;
+}
+.info-box ol {
+  margin: 6px 0 0 20px;
+  padding: 0;
+}
+
+.section {
+  background: #fff;
+  border: 1px solid #d0d7de;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  padding: 4px 16px;
+}
+.section summary {
+  cursor: pointer;
+  padding: 12px 0;
+  font-weight: 600;
+}
+.section[open] {
+  padding-bottom: 16px;
+}
+
+.images {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.images img {
+  width: 100%;
+  border-radius: 6px;
+  border: 1px solid #d0d7de;
+}
+.images figcaption {
+  text-align: center;
+  font-size: 0.85rem;
+  color: #57606a;
+  margin-top: 6px;
+}
+
+.settings {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+.settings .col label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 0.85rem;
+  color: #57606a;
+  margin-bottom: 8px;
+}
+.settings .col label.inline {
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}
+.settings input,
+.settings select {
+  padding: 6px 8px;
+  border: 1px solid #d0d7de;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  font-family: inherit;
+}
+.settings h4 {
+  margin: 12px 0 6px;
+  font-size: 0.95rem;
+}
+
+.tabs {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 0;
+}
+.tab {
+  padding: 10px 16px;
+  background: #eaeef2;
+  border: 1px solid #d0d7de;
+  border-bottom: none;
+  border-radius: 6px 6px 0 0;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+.tab.active {
+  background: #fff;
+  border-bottom-color: #fff;
+  margin-bottom: -1px;
+}
+.tab-content {
+  background: #fff;
+  border: 1px solid #d0d7de;
+  border-radius: 0 6px 6px 6px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+.hidden {
+  display: none !important;
+}
+
+#editor {
+  min-height: 220px;
+  font-size: 0.95rem;
+}
+.ql-container {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+.separator-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.separator-row label {
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+.separator-row input {
+  padding: 8px 10px;
+  border: 1px solid #d0d7de;
+  border-radius: 4px;
+  width: 200px;
+  font-family: monospace;
+}
+
+.primary-btn {
+  background: #1f883d;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+.primary-btn:hover {
+  background: #1a7434;
+}
+.primary-btn:disabled {
+  background: #94d3a2;
+  cursor: wait;
+}
+
+.secondary-btn {
+  background: #f6f8fa;
+  color: #1f2328;
+  border: 1px solid #d0d7de;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+.secondary-btn:hover {
+  background: #eaeef2;
+}
+
+.status {
+  margin: 16px 0;
+  font-size: 0.9rem;
+}
+.status.error {
+  color: #cf222e;
+}
+.status.success {
+  color: #1f883d;
+}
+.status.info {
+  color: #0969da;
+}
+
+/* Output section — buttons at TOP */
+#output-section {
+  background: #fff;
+  border: 1px solid #d0d7de;
+  border-radius: 8px;
+  padding: 20px;
+  margin-top: 24px;
+}
+.output-header {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding-bottom: 16px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid #eaeef2;
+}
+#preview {
+  font-size: 0.95rem;
+  word-break: break-word;
+  line-height: 1.7;
+}
+#preview span.hl {
+  border-radius: 2px;
+  padding: 0 1px;
+}
+.preview-table {
+  border-collapse: collapse;
+  margin: 12px 0;
+  font-size: 0.9rem;
+}
+.preview-table th,
+.preview-table td {
+  border: 1px solid #d0d7de;
+  padding: 4px 8px;
+  text-align: left;
+}
+.preview-table th {
+  background: #f6f8fa;
+}
+
+#raw-text {
+  background: #f6f8fa;
+  padding: 12px;
+  border-radius: 6px;
+  overflow-x: auto;
+  font-size: 0.85rem;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+@media (max-width: 640px) {
+  .settings,
+  .images {
+    grid-template-columns: 1fr;
+  }
+}

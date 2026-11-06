@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SortHere · AquaCore</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.snow.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>📄 SortHere</h1>
+        <p class="subtitle">Sort here your Note · A product by AquaCore</p>
+      </header>
+
+      <div class="info-box">
+        <strong>Quick guide</strong>
+        <ol>
+          <li>Choose <b>Upload .docx</b> or <b>Paste rich text</b>.</li>
+          <li>Adjust document settings and separator if needed.</li>
+          <li>
+            Click <b>Process</b>. Download buttons appear at the top of the
+            output.
+          </li>
+        </ol>
+      </div>
+
+      <details class="section">
+        <summary>Before and after</summary>
+        <div class="images">
+          <figure>
+            <img
+              src="https://res.cloudinary.com/dlb3sebxx/image/upload/v1793901637/Screenshot_2026-11-05_232735_w5xfxc.png"
+              alt="Before"
+            />
+            <figcaption>Before — original notes</figcaption>
+          </figure>
+          <figure>
+            <img
+              src="https://res.cloudinary.com/dlb3sebxx/image/upload/v1793901638/Screenshot_2026-11-05_232706_f4elb0.png"
+              alt="After"
+            />
+            <figcaption>After — arranged by SortHere</figcaption>
+          </figure>
+        </div>
+      </details>
+
+      <details class="section">
+        <summary>⚙️ Document Settings</summary>
+        <div class="settings">
+          <div class="col">
+            <h4>Font</h4>
+            <label
+              >Font family <input type="text" id="font_name" value="Aptos"
+            /></label>
+            <label
+              >Font size (pt)
+              <input
+                type="number"
+                id="font_size"
+                value="5"
+                min="1"
+                max="72"
+                step="0.5"
+            /></label>
+
+            <h4>Table</h4>
+            <label
+              >Table style
+              <input type="text" id="table_style" value="Plain Table 1"
+            /></label>
+            <label
+              >Autofit
+              <select id="autofit_mode">
+                <option value="contents">AutoFit Contents</option>
+                <option value="window">AutoFit Window</option>
+                <option value="fixed">Fixed Column Width</option>
+              </select>
+            </label>
+
+            <h4>Paragraph spacing</h4>
+            <label
+              >Before (pt)
+              <input
+                type="number"
+                id="space_before"
+                value="0"
+                step="0.5"
+                min="0"
+            /></label>
+            <label
+              >After (pt)
+              <input
+                type="number"
+                id="space_after"
+                value="0"
+                step="0.5"
+                min="0"
+            /></label>
+            <label
+              >Line spacing
+              <select id="line_spacing">
+                <option value="1.0">1.0</option>
+                <option value="1.15">1.15</option>
+                <option value="1.5">1.5</option>
+                <option value="2.0">2.0</option>
+                <option value="2.5">2.5</option>
+                <option value="3.0">3.0</option>
+              </select>
+            </label>
+          </div>
+          <div class="col">
+            <h4>Margins (inches)</h4>
+            <label
+              >Top
+              <input
+                type="number"
+                id="margin_top"
+                value="0.05"
+                step="0.01"
+                min="0"
+            /></label>
+            <label
+              >Bottom
+              <input
+                type="number"
+                id="margin_bottom"
+                value="0.05"
+                step="0.01"
+                min="0"
+            /></label>
+            <label
+              >Left
+              <input
+                type="number"
+                id="margin_left"
+                value="0.05"
+                step="0.01"
+                min="0"
+            /></label>
+            <label
+              >Right
+              <input
+                type="number"
+                id="margin_right"
+                value="0.05"
+                step="0.01"
+                min="0"
+            /></label>
+            <label
+              >Gutter
+              <input type="number" id="gutter" value="0" step="0.01" min="0"
+            /></label>
+            <label
+              >Gutter position
+              <select id="gutter_position">
+                <option>Left</option>
+                <option>Top</option>
+              </select>
+            </label>
+
+            <h4>Columns</h4>
+            <label
+              >Number
+              <select id="num_cols">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3" selected>3</option>
+              </select>
+            </label>
+            <label
+              >Spacing (inches)
+              <input
+                type="number"
+                id="col_spacing"
+                value="0.1"
+                step="0.01"
+                min="0"
+            /></label>
+            <label class="inline"
+              ><input type="checkbox" id="col_line" /> Line between
+              columns</label
+            >
+          </div>
+        </div>
+      </details>
+
+      <div class="input-section">
+        <div class="tabs">
+          <button class="tab active" data-tab="upload">Upload .docx</button>
+          <button class="tab" data-tab="paste">Paste rich text</button>
+        </div>
+
+        <div class="tab-content" id="tab-upload">
+          <input type="file" id="file-input" accept=".docx" />
+          <p class="hint">Or drag and drop a <code>.docx</code> file here</p>
+        </div>
+
+        <div class="tab-content hidden" id="tab-paste">
+          <div id="editor"></div>
+        </div>
+      </div>
+
+      <div class="separator-row">
+        <label for="separator">Separator</label>
+        <input type="text" id="separator" value=", " />
+      </div>
+
+      <button id="process-btn" class="primary-btn">Process →</button>
+
+      <div id="status" class="status"></div>
+
+      <!-- Output: download buttons on TOP so user sees them immediately -->
+      <div id="output-section" class="hidden">
+        <div class="output-header">
+          <button id="download-docx" class="primary-btn">
+            ⬇ Download .docx
+          </button>
+          <button id="download-txt" class="secondary-btn">
+            ⬇ Download .txt
+          </button>
+        </div>
+
+        <h2>Preview</h2>
+        <div id="preview"></div>
+
+        <h2>Raw flattened text</h2>
+        <pre id="raw-text"></pre>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
